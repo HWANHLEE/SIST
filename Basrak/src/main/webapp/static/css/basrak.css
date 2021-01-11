@@ -1,0 +1,78 @@
+@charset "UTF-8";
+h2 {
+	text-align: center;
+	color: rgb(245, 223, 77);
+}
+.white{
+	color : white;
+}
+hr{
+	width : 200px;
+	border: 1px solid rgb(245, 223, 77);
+}
+.basrak{
+	color: rgb(245, 223, 77);
+	font-weight: bold;
+}
+.basrak_em{
+	font-size: 1.5em;
+}
+
+.FAQ {
+	margin-left: 450px;
+	padding: 10px 25px; /* 버튼 크기 조절. */
+	background-color: rgb(20, 107, 69);
+	color: white;
+	border-radius: 5px;
+	border: 0px;
+}
+.form-inline {
+	float : right;
+	margin-right : 230px;
+	/* text-align: center; */
+	background-color: rgb(245, 223, 77);
+	width: 500px;
+	height: 300px;
+	border-radius: 25px;
+}
+
+.form-inline .form-group:first-child {
+	width : 120px;
+	margin-left: 50px;
+	float : left;
+}
+
+.form-inline .form-group:nth-child(2) {
+	width : 280px;
+	margin-left: 50px;
+	float : left;
+}
+.introduce:first-child{
+	margin-top : 140px;	
+}
+.introduce:nth-child(2){
+	margin-top : 30px;
+}
+body{
+	background-color : rgb(147, 149, 151);
+	color : white;
+	 font-family: 'BMHANNAAir';
+    /*   width : 100px; */
+}
+#displayDiv{
+	border-left : 1px solid black;
+}
+.content{
+	margin-left : 20px;
+	margin-right : 20px;
+}
+.content1{
+	margin-left : 30px;
+}
+.em{
+	font-size: 2em;
+	color: rgb(245, 223, 77);
+}
+form{
+	text-align : center;
+}

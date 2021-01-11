@@ -1,0 +1,127 @@
+@charset "UTF-8";
+
+@font-face {
+	font-family: 'BMHANNAAir';
+	src:
+		url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_four@1.0/BMHANNAAir.woff')
+		format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
+/*배민 폰트를 사용하기 위한 2단계 */
+.bmFont {
+	font-family: 'BMHANNAAir';
+}
+
+/* 가장 바깥 상자 */
+.main {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin-top: -100px;
+	margin-left: -512px;
+	background-color: rgb(224, 225, 226);
+	width: 1000px;
+	height: 200px;
+}
+.h2_mypage{
+	text-align: center;
+	color: rgb(245, 223, 77);
+}
+
+hr{
+	width : 150px;
+	border: 1px solid rgb(245, 223, 77);
+}
+
+.main_1 {
+	/* display: inline-block; */
+	border: 1px solid black;
+	/* width : 200px; */
+	height: 200px;
+	float: left;
+	width: 15%;
+}
+
+.main_2 {
+	/* display: inline-block; */
+	border: 1px solid black;
+	height: 200px;
+	/* width : 350px; */
+	float: left;
+	width: 39%;
+}
+
+.main_3 {
+	/* display: inline-block; */
+	border: 1px solid black;
+	height: 200px;
+	/* width : 150px; */
+	float: left;
+	width: 15%;
+}
+
+.main_4 {
+	/* display: inline-block; */
+	border: 1px solid black;
+	height: 200px;
+	/* width : 150px; */
+	float: left;
+	width: 15%;
+}
+
+.main_5 {
+	/* display: inline-block; */
+	border: 1px solid black;
+	height: 200px;
+	/* width : 150px; */
+	float: left;
+	width: 15%;
+}
+
+/* 상자 안의 글자 부분  */
+.content {
+	/* display : table-cell; */
+	vertical-align: middle;
+	text-align: center;
+}
+
+.btnUpdate, .btnReset, .btnCancel, .btnDelete {
+	margin-top: 10px;
+	padding: 10px 25px; /* 버튼 크기 조절. */
+	background-color: rgb(245, 223, 77);
+	color: rgb(147, 149, 151);
+	border-radius: 5px;
+	border: 0px;
+}
+
+body {
+	background-color: rgb(147, 149, 151);
+	font-family:  'BMHANNAAir';
+}
+
+.table_userinfo {
+	width: 700px;
+	margin: auto;
+	text-align : center;
+	background-color: rgb(147, 149, 151);
+	color : rgb(245, 223, 77);
+	border : 1px solid rgb(245, 223, 77);
+	font-size : 1.5em;
+}
+caption{
+	font-size : 1.3em;
+	color :  rgb(245, 223, 77);
+}
+
+.myInfoH2 {
+	text-align: center;
+}
+
+h3{
+	color :  rgb(245, 223, 77);
+}
+
+tr > td:nth-child(1){
+	width: 30%;
+}

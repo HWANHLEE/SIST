@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>회원가입 페이지</title>
+<link rel="stylesheet" href="/basrak/static/css/bootstrap.css">
+<link rel="stylesheet" href="/basrak/static/css/register.css">
+<script src="/basrak/static/js/jquery-3.5.1.js"></script>
+
+<script>
+	$(document).ready(function() {
+		$('#btnSubmit').prop("disabled", true); //처음에는 무조건 비활성화
+		$('form').on(	'submit',	function() {
+			if ($('#txtPasswd').val() != $('#txtPasswd1').val()) {
+				alert("비밀번호의 값이 서로 일치하지 않습니다.\n확인 후 다시 입력해 주세요.");
+				$('#txtPasswd').val('');
+				$('#txtPasswd1').val('');
+				$('#txtPasswd').focus();
+				
+				return false;
+			}
+		});
+
+		$("#txtNickname").on("blur", function() {
+			$.ajax({
+				url : "/basrak/membership/nickNameCheck/" + $(this).val(), //     /idcheck/jimin
+				type : "POST",
+				dataType : "json",
+				success : function(data) {
+					if (data.result) { //사용할 수 있는 계정이라면
+						$('#nickNameCheck').text("").removeClass('falseResult');
+						$('#nickNameCheck').text('사용 가능한 닉네임 입니다.').addClass('trueResult');
+						$('#btnSubmit').prop("disabled", false); //버튼 활성화
+					} else { //사용할 수 없는 계정이라면
+						$('#nickNameCheck').text("").removeClass('trueResult');
+						$('#nickNameCheck').text('이미 사용중인 닉네임 입니다.').addClass('falseResult');
+						$('#btnSubmit').prop("disabled", true); //버튼 비활성화
+					}
+				}
+			});
+		});
+	});
+</script>
+</head>
+<body>
+		<div class="container">
+		<section id="row">
+			<form class="form-block" id="login-form" action="/basrak/membership/register" method="POST">
+				<h1>회 원 가 입</h1>
+				<!-- 닉네임 -->
+				<div>
+					<label for="txtNickname" >닉네임  </label>
+					<input type="text" placeholder="닉네임을 입력하세요."  name="nickname" id="txtNickname" autofocus required/>
+					<span class="nickname_ajax" id="nickNameCheck"></span> <!-- 닉네임 중복 확인 Ajax  -->
+				</div>
+				<div>
+					<label for="txtEmail">E-mail  </label>
+					<input type="email" placeholder="E-mail을 입력하세요."  name="email" id="txtEmail" required/>
+				</div>
+				<div>
+					<label for="txtPasswd" >패스워드  </label>
+					<input type="password"  name="passwd"	id = "txtPasswd" placeholder="비밀번호를 입력하세요." required/>
+				</div>
+				<div>
+					<label for="txtPasswd1" >패스워드(확인)</label>
+					<input type="password" name="passwd1" id="txtPasswd1" placeholder="비밀번호를 한 번 더 입력하세요." required/>
+				</div>
+
+				<br />
+				<div>
+					<button type="submit" class="member1" id='btnSubmit'>가입하기</button>
+					<button type="reset" class="member1" >취소하기</button>
+					<br /> <br />
+				</div>
+			</form><!-- form -->
+		</section><!-- row -->
+	</div><!-- container -->
+</body>
+</html>

@@ -1,0 +1,60 @@
+@charset "UTF-8";
+/* 배민 한나체 Air를 사용하기 위한  font family*/
+@font-face {
+	font-family: 'BMHANNAAir';
+	src:
+		url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_four@1.0/BMHANNAAir.woff')
+		format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
+/*배민 한나체 Air*/
+.bmFont {
+	font-family: 'BMHANNAAir';
+	width: 100px;
+}
+
+body {
+	background-color: rgb(147, 149, 151);
+	font-family: 'BMHANNAAir';
+}
+
+.h2_userchoice {
+	text-align: center;
+	color: rgb(245, 223, 77);
+}
+
+hr {
+	width: 150px;
+	border: 1px solid rgb(245, 223, 77);
+}
+
+.table_userchoice {
+	width: 700px;
+	margin: auto;
+	text-align: center;
+	background-color: rgb(147, 149, 151);
+	color: rgb(245, 223, 77);
+	border: 1px solid rgb(245, 223, 77);
+	font-size: 1.5em;
+}
+
+caption {
+	font-size: 1.3em;
+	color: rgb(245, 223, 77);
+}
+
+.btnSubmit {
+	margin-top: 10px;
+	margin-left : 545px;
+	padding: 10px 25px; /* 버튼 크기 조절. */
+	background-color: rgb(245, 223, 77);
+	color: rgb(147, 149, 151);
+	border-radius: 5px;
+	border: 0px;
+}
+
+.subject{
+	width : 30%;
+	text-align : center;
+}

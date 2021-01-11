@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+      "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Faq">
+      
+   <resultMap type="faqVO" id="selectMap">
+      <id column="f_seq" jdbcType="CHAR" 
+         property="f_seq" javaType="String"/>
+         
+      <result column="title" jdbcType="VARCHAR" 
+         property="title" javaType="String"/>
+         
+      <result column="content" jdbcType="VARCHAR" 
+         property="content" javaType="String"/>
+         
+      <result column="writedate" jdbcType="VARCHAR" 
+         property="writedate" javaType="String"/>
+         
+      <result column="readnum" jdbcType="INTEGER" 
+         property="readnum" javaType="Integer"/>     
+   </resultMap>
+   
+  <!-- 한개의 글 조회하기 -->
+   <select id="selectOne" parameterType="String" resultMap="selectMap">
+      SELECT F_SEQ, title, content, TO_CHAR(regdate, 'YYYY-MM-DD') AS writedate, readnum 
+      FROM faq_board
+      WHERE f_seq = #{f_seq}
+   </select>
+    
+     <!-- 게시판 전체 목록 보기 -->
+	<parameterMap type="hashMap" id="selectAllParameterMap">
+		<parameter property="result" javaType="ResultSet" jdbcType="CURSOR"
+							mode="OUT" resultMap="selectMap"/>
+	</parameterMap>
+    <select id="selectAllSP" parameterMap="selectAllParameterMap"
+				statementType="CALLABLE">
+		{ call sp_faq_select_all(?) }
+    </select>    
+    
+   <!-- 전체 레코드 수 조회 -->
+	<select id="selectCountFaq" resultType="int">
+		SELECT COUNT(f_seq) FROM FAQ_BOARD
+	</select>
+   
+
+   
+    <!-- 조회수 증가 -->
+   <update id="readnumUpdate" parameterType="int">
+      UPDATE FAQ_BOARD SET readnum = readnum + 1
+      WHERE f_seq = #{f_seq}
+   </update>
+   
+</mapper>

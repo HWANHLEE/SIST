@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>회원가입 페이지</title>
+<link rel="stylesheet" href="/basrak/static/css/bootstrap.css">
+<script src="/basrak/static/js/jquery-3.5.1.js"></script>
+<style>
+.container {
+	padding-right: 10%;
+	padding-left: 10%;
+}
+
+.trueResult {
+	color: green;
+	font-weight: 900;
+	font-size: 1.5em;
+}
+
+.falseResult {
+	color: red;
+	font-weight: 900;
+	font-size: 1.5em;
+}
+</style>
+<script>
+	$(document).ready(function() {
+		$('#btnSubmit').prop("disabled", true); //처음에는 무조건 비활성화
+		$('form').on(	'submit',	function() {
+			if ($('#txtPasswd').val() != $('#txtPasswd1').val()) {
+				alert("비밀번호의 값이 서로 일치하지 않습니다.\n확인 후 다시 입력해 주세요.");
+				$('#txtPasswd').val('');
+				$('#txtPasswd1').val('');
+				$('#txtPasswd').focus();
+				
+				return false;
+			}
+		});
+
+		$("#txtNickname").on("blur", function() {
+			$.ajax({
+				url : "/basrak/membership/nickNameCheck/" + $(this).val(), //     /idcheck/jimin
+				type : "POST",
+				dataType : "json",
+				success : function(data) {
+					if (data.result) { //사용할 수 있는 계정이라면
+						$('#nickNameCheck').text("").removeClass('falseResult');
+						$('#nickNameCheck').text('사용 가능한 닉네임 입니다.').addClass('trueResult');
+						$('#btnSubmit').prop("disabled", false); //버튼 활성화
+					} else { //사용할 수 없는 계정이라면
+						$('#nickNameCheck').text("").removeClass('trueResult');
+						$('#nickNameCheck').text('이미 사용중인 닉네임 입니다.').addClass('falseResult');
+						$('#btnSubmit').prop("disabled", true); //버튼 비활성화
+					}
+				}
+			});
+		});
+	});
+</script>
+</head>
+<body>
+	<h1 class="text-center">회원 가입</h1>
+	<div class="container">
+		<div class="row">
+			<form class="form-horizontal" action="/basrak/membership/register" method="POST">
+				<div class="form-group">
+					<!-- 닉네임 -->
+					<label for="txtNickname" class="col-sm-2 control-label">닉네임</label>
+					<div class="col-sm-4">
+						<input type="text" class="form-control" name="nickname" id="txtNickname" placeholder="닉네임 입력합니다." required>
+					</div>
+					<!-- 닉네임 중복 체크 -->
+					<div class="col-sm-4">
+			            <span id="nickNameCheck"></span>
+		            </div>
+	            </div>
+	            <!-- email -->
+				<div class="form-group">
+					<label for="txtEmail" class="col-sm-2 control-label">E-mail</label>
+					<div class="col-sm-8">
+						<input type="email" name="email" class="form-control" id="txtEmail" placeholder="이메일을 입력합니다." required>
+					</div>
+				</div>
+				<!-- 비밀번호 -->
+				<div class="form-group">
+					<label for="txtPasswd" class="col-sm-2 control-label">패스워드</label>
+					<div class="col-sm-8">
+						<input type="password" name="passwd" class="form-control"	 id="txtPasswd" placeholder="비밀번호를 입력합니다." required>
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="txtPasswd1" class="col-sm-2 control-label">패스워드(확인)</label>
+					<div class="col-sm-8">
+						<input type="password" name="passwd1" class="form-control" id="txtPasswd1" placeholder="비밀번호를 다시입력합니다." required>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="col-sm-offset-2 col-sm-10">
+						<button type="submit" class="btn btn-success" id='btnSubmit'>가입하기</button>
+						<button type="reset" class="btn btn-warning">취소하기</button>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</body>
+</html>

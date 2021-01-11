@@ -1,0 +1,49 @@
+@charset "UTF-8";
+
+body {
+	background-color: rgb(147, 149, 151);
+	color: white;
+	font-family: 'BMHANNAAir';
+}
+
+h3 {
+	text-align: center;
+	color: rgb(245, 223, 77);
+}
+
+hr {
+	width: 130px;
+	border: 1px solid rgb(245, 223, 77);
+}
+
+.table1{
+	width : 600px;
+	margin : auto;
+	border-spacing : 0 0;
+	padding : 2;
+	border : 0;
+}
+.table2{
+	width : 100%;
+	background-color: rgb(147, 149, 151);
+	border-spacing : 4 4;
+	padding : 0;
+	height : 1;
+	border : 0;
+}
+
+.td_illum{
+	height : 1; 
+	background-color : rgb(245, 223, 77);
+	
+}
+
+.tr_illum{
+	background-color: rgb(147, 149, 151);
+	color: white;
+	border : none;
+}
+
+.tr_gray{
+	
+}

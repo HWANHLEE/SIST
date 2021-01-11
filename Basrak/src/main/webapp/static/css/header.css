@@ -1,0 +1,105 @@
+@charset "UTF-8";
+/* <!-- PANTONE 2021 올해의 컬러 -->
+<!-- Illuminating : 245, 223, 77 -->
+<!-- Ultimate Gray : 147, 149, 151 --> */
+/* 배민 한나체 Air를 사용하기 위한  font family*/
+@font-face {
+	font-family: 'BMHANNAAir';
+	src:
+		url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_four@1.0/BMHANNAAir.woff')
+		format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
+/*배민 한나체 Air*/
+.bmFont {
+	font-family: 'BMHANNAAir';
+	width: 100px;
+}
+
+ul {
+	margin-left: 250px;
+	/*   margin-left: 100px; */
+}
+/* li태그 수평으로. */
+li {
+	margin: 30px; /* li태그 간의 간격. */
+	display: inline-block;
+}
+
+li:last-child {
+	margin-left: 100px;
+}
+
+#outHeader {
+	width: 2000px;
+}
+
+#inHeader {
+	width: 2000px;
+	height: 57px;
+}
+
+#inHeader1 {
+	height: 57px;
+}
+
+.header {
+	/*background-color: #006400; */
+	background-color: rgb(245, 223, 77);
+	height: 100px;
+	width: 100%;
+}
+
+.header1 {
+	/*background-color: #006400; */
+	background-color: rgb(147, 149, 151);
+	height: 100px;
+	width: 100%;
+}
+
+.mouseOver {
+	color: white;
+}
+
+.a {
+	color: rgb(147, 149, 151);
+	margin-top: 0px;
+}
+
+.logoImages {
+	width: 50px;
+	height: 50px;
+}
+
+.bmFont {
+	width: 70px;
+	height: 50px;
+}
+
+#headerLi {
+	margin-top: 0px;
+	margin-left: 10px;
+}
+
+#btnLogin, #btnLogout, #btnMyInfo {
+	width: 150px;
+	padding: 10px 25px; /* 버튼 크기 조절. */
+	background-color: rgb(245, 223, 77);
+	color: white;
+	border-radius: 5px;
+	border: 0px;
+}
+
+.hover_effect_6 .caption_title {
+	-webkit-transform: translateY(-200px);
+	-moz-transform: translateY(-200px);
+	-o-transform: translateY(-200px);
+	-ms-transform: translateY(-200px);
+	transform: translateY(-200px);
+	-webkit-transition: all 0.2s ease-in-out 0.1s;
+	-moz-transition: all 0.2s ease-in-out 0.1s;
+	-o-transition: all 0.2s ease-in-out 0.1s;
+	-ms-transition: all 0.2s ease-in-out 0.1s;
+	transition: all 0.2s ease-in-out 0.1s;
+}

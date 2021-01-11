@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+      PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="UserChoice">
+
+	<!-- ResultMap -->
+ 
+   <resultMap type="userChoiceVO" id="selectMap">
+      <id column="choice_seq" jdbcType="INTEGER" 
+      property="choice_seq"   javaType="Integer" />
+      <result column="s_seq" jdbcType="VARCHAR" 
+      property="s_seq"   javaType="String" />
+      <result column="d_seq" jdbcType="VARCHAR" 
+      property="d_seq"   javaType="String" />
+      <result column="nickname" jdbcType="VARCHAR" 
+      property="nickname"   javaType="String" />
+   </resultMap>
+	
+	<select id="selectNickname" resultType="userChoiceVO" resultMap="selectMap">
+		SELECT *
+		FROM USER_CHOICE
+		WHERE nickname = #{nickname};
+	</select>
+	
+	<!-- 프로시저를 사용하게 되는경우 -->
+	<parameterMap type="userChoiceVO" id="insertParameterMap">
+		<parameter property="s_seq" javaType="String"  jdbcType="VARCHAR" mode="IN"/>
+		<parameter property="d_seq" javaType="String" jdbcType="VARCHAR" mode="IN"/>
+		<parameter property="nickname" javaType="String" jdbcType="VARCHAR" mode="IN"/>
+	</parameterMap>
+	
+	<insert id="insert" statementType="CALLABLE" parameterMap="insertParameterMap">
+		{ call sp_users_choice_insert(?,?,?) }
+	</insert>
+	
+	<!-- 회원 선택 전체 조회 -->
+	<parameterMap type="hashMap" id="selectAllParameterMap">
+		<parameter property="result" javaType="ResultSet" jdbcType="CURSOR"
+		mode="OUT" resultMap="selectMap"/>
+	</parameterMap>
+	<select id="selectAllSP" parameterMap="selectAllParameterMap" statementType="CALLABLE">
+		{ call sp_user_choice_select_all(?) }
+	</select>
+	
+	<delete id="updelete" parameterType="String">
+		DELETE FROM USER_CHOICE
+		WHERE nickname = #{nickname}
+	</delete>
+</mapper>

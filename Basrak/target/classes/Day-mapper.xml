@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+      PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Day">
+
+	<parameterMap type="dayVO" id="insertParameterMap">
+		<parameter property="day" javaType="String" jdbcType="CHAR" mode="IN"/>
+	</parameterMap>
+	
+	<insert id="insertSP" parameterType="dayVO" parameterMap="insertParameterMap">
+	{ call sp_day_insert(?) }
+	</insert>
+ 
+   <!-- ResultMap -->
+   <resultMap type="dayVO" id="selectMap">
+      <result column="d_seq" jdbcType="INTEGER" 
+      property="d_seq"   javaType="Integer" />
+      <result column="day" jdbcType="CHAR" 
+      property="day"   javaType="String" />
+   </resultMap>
+   
+	<!--
+	<parameterMap type="hashMap" id="loginParameterMap">
+		<parameter property="userid" javaType="String"/>
+		<parameter property="passwd" javaType="String"/>
+		<parameter property="result" javaType="Integer" jdbcType="INTEGER"  mode="OUT"/>
+	</parameterMap>
+	<select id="login" statementType="CALLABLE" parameterMap="loginParameterMap">
+	{ call sp_users_login(?,?,?) }
+	</select>
+	-->
+	<parameterMap type="hashMap" id="selectAllParameterMap">
+		<parameter property="result" javaType="ResultSet" jdbcType="CURSOR"
+		mode="OUT" resultMap="selectMap"/>
+	</parameterMap>
+	<select id="selectAllSP" parameterMap="selectAllParameterMap" statementType="CALLABLE">
+		{ call sp_users_day_select_all(?) }
+	</select>
+	
+	<!-- 
+	<parameterMap type="hashMap" id="selectOneParameterMap">
+		<parameter property="userid" javaType="String" jdbcType="VARCHAR" mode="IN"/>
+		<parameter property="result" javaType="ResultSet" jdbcType="CURSOR"
+		mode="OUT" resultMap="selectMap"/>
+	</parameterMap>
+   <select id="selectOneSP"  parameterMap="selectOneParameterMap" statementType="CALLABLE">
+      { call sp_users_select_one(?,?) }
+   </select>
+
+   <update id="update" parameterType="userVO">
+         UPDATE Users
+         SET age =#{age}
+         WHERE userid=#{userid}
+   </update>	
+   <parameterMap type="userVO" id="updateParameterMap">
+   		<parameter property="age" javaType="Integer" jdbcType="INTEGER" mode="IN"/>
+   		<parameter property="userid" javaType="String" jdbcType="VARCHAR" mode="IN"/>
+   </parameterMap>
+   <update id="updateSP" parameterMap="updateParameterMap" statementType="CALLABLE" >
+        { call sp_users_update(?,?) }
+   </update>
+   
+   <delete id="delete" parameterType="String">
+      DELETE FROM Users
+      WHERE userid = #{userid}
+   </delete>
+   <parameterMap type="String" id="deleteParameterMap">
+   		<parameter property="userid" javaType="String" jdbcType="VARCHAR" />
+   </parameterMap>
+   <delete id="deleteSP" parameterMap="deleteParameterMap">
+      { call sp_users_delete(?) }
+   </delete> 
+    -->
+</mapper>

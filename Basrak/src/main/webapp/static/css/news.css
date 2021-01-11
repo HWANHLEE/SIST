@@ -1,0 +1,11 @@
+@charset "UTF-8";
+
+body{
+	background-color : rgb(147, 149, 151);
+	color : rgb(245, 223, 77);
+	font-family: 'BMHANNAAir';
+}
+
+a{
+	color: rgb(245, 223, 77);
+}
