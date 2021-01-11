@@ -18,6 +18,15 @@ public class FaqServiceImpl implements FaqService {
 	public FaqVO read(String f_seq) {
 		FaqVO faqVO = this.faqDao.selectFaq(f_seq);
 		
+		String title = faqVO.getTitle();
+		title = this.reverseChangeTag(title);
+		title = title.replace("\"", "'");
+		faqVO.setTitle(title);
+		
+		String content = faqVO.getContent();
+		content = this.reverseChangeTag(content);
+		faqVO.setContent(content);
+		
 		return faqVO;
 	}
 

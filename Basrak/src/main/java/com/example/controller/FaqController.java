@@ -51,6 +51,7 @@ public class FaqController {
 	@GetMapping("/read")
 	public String read(@RequestParam("f_seq") String f_seq, Model model) {
 		FaqVO faqVO = this.faqService.read(f_seq);
+		log.info("faqVO의 값은 : " + faqVO);
 		model.addAttribute("faq", faqVO);
 		
 		return "/faq/read";		//WEB-INF/views/faq/read.jsp

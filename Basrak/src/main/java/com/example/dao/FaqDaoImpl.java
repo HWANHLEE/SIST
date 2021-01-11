@@ -21,7 +21,8 @@ public class FaqDaoImpl implements FaqDao {
 	// 한개의 글 조회
 	@Override
 	public FaqVO selectFaq(String f_seq) {
-		log.warn("--------------------------------------------------------------" +f_seq);
+		f_seq = f_seq.trim();
+		log.warn("잉"+f_seq+"잉");
 		log.warn("한개의 글 조회 : " + this.sqlSession.selectOne("Faq.selectOne", f_seq));
 		
 		return this.sqlSession.selectOne("Faq.selectOne", f_seq);

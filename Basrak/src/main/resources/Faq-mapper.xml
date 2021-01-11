@@ -5,26 +5,27 @@
 <mapper namespace="Faq">
       
    <resultMap type="faqVO" id="selectMap">
-      <id column="f_seq" jdbcType="CHAR" 
-         property="f_seq" javaType="String"/>
-         
-      <result column="title" jdbcType="VARCHAR" 
-         property="title" javaType="String"/>
-         
-      <result column="content" jdbcType="VARCHAR" 
-         property="content" javaType="String"/>
-         
-      <result column="writedate" jdbcType="VARCHAR" 
-         property="writedate" javaType="String"/>
-         
-      <result column="readnum" jdbcType="INTEGER" 
-         property="readnum" javaType="Integer"/>     
-   </resultMap>
+		<id column="f_seq" jdbcType="CHAR" 
+			property="f_seq" javaType="String"/>
+			
+		<result column="title" jdbcType="VARCHAR" 
+			property="title" javaType="String"/>
+			
+		<result column="content" jdbcType="VARCHAR" 
+			property="content" javaType="String"/>
+			
+		<result column="writedate" jdbcType="VARCHAR" 
+			property="writedate" javaType="String"/>
+			
+		<result column="readnum" jdbcType="INTEGER"
+			property="readnum" javaType="Integer"/>	
+			
+	</resultMap>   
    
   <!-- 한개의 글 조회하기 -->
    <select id="selectOne" parameterType="String" resultMap="selectMap">
       SELECT F_SEQ, title, content, TO_CHAR(regdate, 'YYYY-MM-DD') AS writedate, readnum 
-      FROM faq_board
+      FROM FAQ_BOARD
       WHERE f_seq = #{f_seq}
    </select>
     

@@ -1,13 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <c:import url="../common/header.jsp" />
+
 <div class="container">
 	<div class="row">
 		<h1 style="text-align: center">FaQ 읽기</h1>
-		<table width="600" style="margin: auto" cellspacing="0"
-			cellpadding="2">
+		<table width="600" style="margin: auto" cellspacing="0" cellpadding="2">
 			<tr>
 				<td height="22">&nbsp;</td>
 			</tr>
@@ -27,10 +26,9 @@
 						height="1">
 						<tr bgcolor="#F4F4F4">
 							<td width="13%" height="7"></td>
-							
-
-							<td width="25%" height="7">글번호 : </td>
-							<td width="11%" height="7">${faq.f_seq}</td>
+							<td width="51%" height="7">글번호 : ${faq.f_seq} </td>
+							<td width="25%" height="7"></td>
+							<td width="11%" height="7"></td>
 						</tr>
 						<tr bgcolor="#F4F4F4">
 							<td width="13%"></td>
@@ -62,8 +60,6 @@
             <td class="text-right">
             	<div>
   					<button type="button" id="btnList" class="btn btn-primary">목록으로</button>&nbsp;
-  					<button type="button" id="btnFaqUpdate" class="btn btn-success">수정하기</button>&nbsp;
-  					<button type="button" id="btnFaqDelete" class="btn btn-info">삭제하기</button>
 				</div>
             </td>
         </tr>
@@ -83,20 +79,6 @@
 	<!-- 목록으로 버튼을 눌렀을 때 -->
 	$('#btnList').on('click', function(){
 		location.href = "/faq/list";	// 목록으로 이동
-	});
-
-	<!-- 삭제하기 버튼을 눌렀을 때-->
-	$('#btnFaqDelete').on('click', function(){
-		if(confirm("정말 삭제하시겠습니까 ?")){
-			location.href ="/faq/delete?f_seq=" + ${faq.f_seq}; 
-		}else{
-			history.go(0); 
-		}
-	});
-
-	<!-- 수정하기 버튼을 눌렀을 때 -->
-	$('#btnFaqUpdate').on('click', function(){
-		location.href = "/faq/update?f_seq=" + ${faq.f_seq};	>
 	});
 </script>
 <c:import url="../common/footer.jsp" />
